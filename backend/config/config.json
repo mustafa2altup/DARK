@@ -1,0 +1,13 @@
+{
+  "project": "DARK - دارك",
+  "description": "منصة سودانية لتأجير العقارات الموثقة ميدانيًا",
+  "version": "1.0.0",
+  "database": {
+    "type": "sqlite",
+    "path": "./database/darq.db"
+  },
+  "server": {
+    "port": 3000,
+    "host": "localhost"
+  }
+}

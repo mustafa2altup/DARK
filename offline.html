@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARK - وضع عدم الاتصال</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .offline-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .icon {
+            font-size: 80px;
+            margin: 20px 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .features {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: right;
+        }
+
+        .features h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .status-bar {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-bar.connected {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .tips {
+            background: #e7f3ff;
+            border-right: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            text-align: right;
+        }
+
+        .tips h3 {
+            color: #667eea;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .tips ul {
+            list-style: none;
+            color: #555;
+        }
+
+        .tips li {
+            padding: 6px 0;
+            font-size: 14px;
+        }
+
+        .tips li:before {
+            content: "💡 ";
+        }
+
+        @media (max-width: 600px) {
+            .offline-card {
+                padding: 25px;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            .icon {
+                font-size: 60px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-card">
+        <div class="logo">DARK</div>
+        
+        <div class="icon">📴</div>
+        
+        <h1>أنت الآن في وضع عدم الاتصال</h1>
+        
+        <p>لا تقلق! يمكنك الاستمرار في استخدام العديد من ميزات DARK حتى بدون اتصال بالإنترنت.</p>
+        
+        <div class="status-bar" id="statusBar">
+            <span>⚠️</span>
+            <span>لا يوجد اتصال بالإنترنت. سيتم حفظ إجراءاتك محليًا ومزامنتها عند عودة الاتصال.</span>
+        </div>
+        
+        <div class="features">
+            <h2>✨ ما يمكنك فعله الآن:</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">🏠</span>
+                    <span class="feature-text">تصفح العقارات المحملة سابقاً</span>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon">❤️</span>
+                    <span class="feature-text">عرض المفضلة المحفوظة</span>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon">✉️</span>
+                    <span class="feature-text">كتابة استفسارات جديدة</span>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon">📅</span>
+                    <span class="feature-text">حجز مواعيد زيارة</span>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon">🔍</span>
+                    <span class="feature-text">البحث في البيانات المخزنة</span>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon">⚙️</span>
+                    <span class="feature-text">تعديل الإعدادات الشخصية</span>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon">📊</span>
+                    <span class="feature-text">عرض الإحصائيات المحلية</span>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-icon">💾</span>
+                    <span class="feature-text">حفظ البيانات تلقائياً</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="btn-container">
+            <button class="btn" onclick="retryConnection()">🔄 إعادة المحاولة</button>
+            <a href="/" class="btn btn-secondary">🏠 الصفحة الرئيسية</a>
+        </div>
+        
+        <div class="tips">
+            <h3>نصائح للاستخدام دون اتصال:</h3>
+            <ul>
+                <li>جميع الإجراءات التي تقوم بها ستُحفظ تلقائيًا</li>
+                <li>سيتم إرسال الاستفسارات والحجوزات عند عودة الاتصال</li>
+                <li>يمكنك تصفح آخر 50 عقار شاهدتها</li>
+                <li>المفضلة والإعدادات متاحة دائمًا</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // التحقق من حالة الاتصال
+        function updateStatus() {
+            const statusBar = document.getElementById('statusBar');
+            const isOnline = navigator.onLine;
+            
+            if (isOnline) {
+                statusBar.className = 'status-bar connected';
+                statusBar.innerHTML = '<span>✅</span><span>تم إعادة الاتصال بنجاح! جاري المزامنة...</span>';
+                
+                // محاولة إعادة التحميل بعد ثانية
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
+            } else {
+                statusBar.className = 'status-bar';
+                statusBar.innerHTML = '<span>⚠️</span><span>لا يوجد اتصال بالإنترنت. سيتم حفظ إجراءاتك محليًا ومزامنتها عند عودة الاتصال.</span>';
+            }
+        }
+
+        function retryConnection() {
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ جاري التحقق...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                updateStatus();
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 2000);
+        }
+
+        // مستمعي الأحداث
+        window.addEventListener('online', updateStatus);
+        window.addEventListener('offline', updateStatus);
+
+        // التحقق الأولي
+        updateStatus();
+
+        // التحقق كل 5 ثواني
+        setInterval(updateStatus, 5000);
+
+        // تسجيل Service Worker إذا كان متاحًا
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/assets/js/service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered:', registration);
+                })
+                .catch(error => {
+                    console.log('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+</body>
+</html>
