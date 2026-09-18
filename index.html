@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="دارك — منصة سودانية لتأجير العقارات الموثّقة ميدانيًا. توثيق بالزيارة الميدانية، وشارة «عقار موثق»، وتواصل مباشر عبر واتساب.">
+<title>دارك — سكن موثوق… من أي مكان في العالم</title>
+<link rel="icon" href="assets/brand/darq-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/darq.css">
+<script src="assets/js/darq.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">تخطَّ إلى المحتوى الرئيسي</a>
+
+<!-- ============================ الشريط العلوي ============================ -->
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="index.html" aria-label="دارك — الصفحة الرئيسية">
+      <img src="assets/brand/darq-logo-horizontal-dark-clear.svg" alt="شعار دارك" width="150" height="34">
+    </a>
+    <nav class="nav" aria-label="التنقّل الرئيسي">
+      <a href="index.html" aria-current="page">الرئيسية</a>
+      <a href="search.html">العقارات</a>
+      <a href="index.html#how">كيف نتحقق؟</a>
+      <a href="index.html#community">خدمات الجالية</a>
+      <a href="index.html#offices">للمكاتب</a>
+    </nav>
+    <span class="spacer"></span>
+    <div class="topbar-actions">
+      <a class="btn ghost" href="login.html">دخول</a>
+      <a class="btn amber" href="publish.html">أضف عقارك</a>
+      <button class="btn ghost menu-btn" id="menu-btn" type="button"
+              aria-expanded="false" aria-controls="mobile-menu" aria-label="فتح قائمة التنقّل">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mmenu" id="mobile-menu">
+    <a href="index.html" aria-current="page">الرئيسية</a>
+    <a href="search.html">العقارات</a>
+    <a href="index.html#how">كيف نتحقق؟</a>
+    <a href="index.html#community">خدمات الجالية</a>
+    <a href="index.html#offices">للمكاتب</a>
+    <a href="login.html">دخول</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================================ البطل =============================== -->
+  <section class="wrap hero">
+    <span class="eyebrow">● منصة الإيجار الموثوقة في السودان</span>
+    <h1>سكن <em>موثوق</em>…<br>من أي مكان في العالم.</h1>
+    <p class="lede">
+      نُوثّق كل عقار ميدانيًا بالصور والتحقق من الملكية والمرافق، لتستأجر بثقة —
+      سواء كنت في بورتسودان أو في الرياض أو لندن.
+    </p>
+
+    <form class="searchbar" id="home-search" role="search" aria-label="ابحث عن عقار">
+      <div class="field">
+        <label for="hs-city">المدينة</label>
+        <select id="hs-city" name="city">
+          <option value="">كل المدن</option>
+          <option value="بورتسودان" selected>بورتسودان</option>
+          <option value="مدني">مدني</option>
+          <option value="عطبرة">عطبرة</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="hs-district">الحي</label>
+        <input type="text" id="hs-district" name="district" placeholder="كل الأحياء" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="hs-type">نوع العقار</label>
+        <select id="hs-type" name="type">
+          <option value="">كل الأنواع</option>
+          <option value="شقة" selected>شقة</option>
+          <option value="منزل">منزل</option>
+          <option value="استوديو">استوديو</option>
+          <option value="غرفة">غرفة</option>
+          <option value="مكتب">مكتب</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="hs-budget">الميزانية الشهرية</label>
+        <select id="hs-budget" name="budget">
+          <option value="">أي ميزانية</option>
+          <option value="200000">حتى 200,000 جنيه</option>
+          <option value="400000">حتى 400,000 جنيه</option>
+          <option value="500000" selected>حتى 500,000 جنيه</option>
+          <option value="700000">حتى 700,000 جنيه</option>
+          <option value="1000000">حتى 1,000,000 جنيه</option>
+        </select>
+      </div>
+      <button class="btn amber" type="submit">ابحث الآن</button>
+    </form>
+
+    <div class="chips">
+      <span class="chip"><b>1,240</b> عقار موثّق</span>
+      <span class="chip"><b>3</b> مدن مغطّاة</span>
+      <span class="chip">متوسط التوثيق <b>48 ساعة</b></span>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="n">1,240<span>+</span></div><div class="l">عقار تم التحقق منه ميدانيًا</div></div>
+      <div class="stat"><div class="n">12,600<span>+</span></div><div class="l">مستخدم نشط على المنصة</div></div>
+      <div class="stat"><div class="n">96<span>%</span></div><div class="l">من المستأجرين وجدوا سكنًا خلال أسبوع</div></div>
+      <div class="stat"><div class="n">42</div><div class="l">مندوب توثيق في المدن المغطّاة</div></div>
+    </div>
+  </section>
+
+  <!-- =========================== عقارات موثّقة =========================== -->
+  <section class="wrap sec" aria-labelledby="h-verified">
+    <div class="sec-head">
+      <div>
+        <h2 id="h-verified">عقارات موثّقة ميدانيًا</h2>
+        <p>كل إعلان هنا زاره مندوب دارك وتحقّق من الواقع ووثّق الملكية والمرافق.</p>
+      </div>
+      <a class="link" href="search.html">تصفّح كل العقارات ←</a>
+    </div>
+    <div class="grid3" id="home-grid"></div>
+  </section>
+
+  <!-- ============================ كيف نتحقق؟ ============================= -->
+  <section class="wrap sec" id="how" aria-labelledby="h-how">
+    <div class="sec-head">
+      <div>
+        <h2 id="h-how">كيف نتحقق؟</h2>
+        <p>ثلاث خطوات تفصل بين إعلانٍ مجهول وعقارٍ تسكنه بثقة.</p>
+      </div>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <span class="num" aria-hidden="true">1</span>
+        <h3>نشر الطلب</h3>
+        <p>يُنشر العقار بتفاصيله وصوره، أو يُنشر طلب سكن يحدّد المدينة والحي والميزانية.
+           كل إعلان يحصل على رمز فريد يبدأ بـ DRQ لمتابعته.</p>
+      </article>
+      <article class="step">
+        <span class="num" aria-hidden="true">2</span>
+        <h3>زيارة ميدانية وتوثيق</h3>
+        <p>مندوب دارك المعتمد يزور العقار فعليًا ويصوّره، ويتحقّق من صلة المُعلن بالملكية،
+           ومن توافر المياه والكهرباء والإنترنت، ومن عدم وجود سمسار وسيط غير معلن.</p>
+      </article>
+      <article class="step">
+        <span class="num" aria-hidden="true">3</span>
+        <h3>شارة وتواصل واتساب</h3>
+        <p>بعد اجتياز التوثيق تُمنح شارة «✅ عقار موثق» ويُفتح تواصل مباشر مع المالك عبر واتساب
+           برسالة مُعبّأة مسبقًا تحمل عنوان الإعلان ورمزه.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========================== خدمات الجالية ============================ -->
+  <section class="wrap sec" id="community" aria-labelledby="h-community">
+    <div class="sec-head">
+      <div>
+        <h2 id="h-community">خدمات الجالية</h2>
+        <p>مصمَّمة لمن يؤجّر وهو خارج السودان، أو يبحث عن سكن عائلته قبل وصولها.</p>
+      </div>
+      <a class="link" href="search.html">ابدأ البحث ←</a>
+    </div>
+    <div class="grid2">
+      <article class="svc">
+        <span class="ic" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3v11H4V8Z"/><circle cx="12" cy="13" r="3.2"/></svg></span>
+        <div>
+          <h3>معاينة عن بُعد</h3>
+          <p>جلسة فيديو مباشرة داخل العقار مع مندوب التوثيق، تشاهد فيها الغرف والمرافق لحظة بلحظة قبل أي التزام.</p>
+        </div>
+      </article>
+      <article class="svc">
+        <span class="ic" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3 5 6v5.5c0 4.4 3 8 7 9.5 4-1.5 7-5.1 7-9.5V6l-7-3Z"/><path d="m9.2 12 2 2 3.6-3.8"/></svg></span>
+        <div>
+          <h3>التحقق من المالك قبل التحويل</h3>
+          <p>نتأكد من صلة المُعلن بالملكية ومن بياناته قبل أن ترسل أي مبلغ، ونزوّدك بتقرير التوثيق ورقمه المرجعي.</p>
+        </div>
+      </article>
+      <article class="svc">
+        <span class="ic" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><circle cx="8" cy="12" r="3.5"/><path d="M11.5 12h9M17 12v3M20 12v2.2"/></svg></span>
+        <div>
+          <h3>عقد إيجار مكتوب</h3>
+          <p>صيغة عقد واضحة تُرسل وتُوقّع قبل السكن، تحدّد المدة والإيجار والالتزامات، بلا شروط مخفية.</p>
+        </div>
+      </article>
+      <article class="svc">
+        <span class="ic" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.2"/><path d="M3 19c1-3.2 3.2-4.6 6-4.6S14 15.8 15 19M16 6.2a3 3 0 0 1 0 5.6M18 19c-.3-1.6-.9-2.8-1.7-3.7"/></svg></span>
+        <div>
+          <h3>استقبال العائلة عند الوصول</h3>
+          <p>ترتيب سكن مؤقت وتوصيل من المطار ومرافقة العائلة إلى العقار الموثّق في اليوم الأول.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================= للمكاتب =============================== -->
+  <section class="wrap sec" id="offices" aria-labelledby="h-offices">
+    <div class="cta-band">
+      <div>
+        <h2 id="h-offices">للمكاتب العقارية</h2>
+        <p>
+          اعرض محفظتك على منصة تعرض العقارات الموثّقة فقط، مع لوحة لإدارة إعلاناتك
+          وتقارير مشاهدة، وشارة موثوقية تُبنى على سجل توثيق حقيقي لا على إعلان مدفوع.
+        </p>
+      </div>
+      <div class="row">
+        <a class="btn ghost" href="login.html">دخول المكاتب</a>
+        <a class="btn amber" href="publish.html">أضف عقارك</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================================ التذييل =============================== -->
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div class="about">
+      <a class="brand" href="index.html" aria-label="دارك — الصفحة الرئيسية">
+        <img src="assets/brand/darq-logo-horizontal-dark-clear.svg" alt="شعار دارك" width="140" height="30">
+      </a>
+      <p>
+        دارك منصة سودانية لتأجير العقارات الموثّقة ميدانيًا. جوهرها طبقة ثقة:
+        لا يُنشر عقار إلا بعد زيارته وتوثيقه، ولا يُشترى التوثيق ولا يُمنح بغير استحقاق.
+      </p>
+    </div>
+    <div>
+      <h4>المنصة</h4>
+      <ul>
+        <li><a href="search.html">تصفّح العقارات</a></li>
+        <li><a href="publish.html">أضف عقارك</a></li>
+        <li><a href="dashboard.html">لوحة المالك</a></li>
+        <li><a href="styleguide.html">نظام التصميم</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>خدمات الجالية</h4>
+      <ul>
+        <li><a href="index.html#community">معاينة عن بُعد</a></li>
+        <li><a href="index.html#community">التحقق من المالك</a></li>
+        <li><a href="index.html#community">عقد إيجار مكتوب</a></li>
+        <li><a href="index.html#offices">باقة المكاتب</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>المدن المغطّاة</h4>
+      <ul>
+        <li><a href="search.html?city=بورتسودان">بورتسودان</a></li>
+        <li><a href="search.html?city=مدني">مدني</a></li>
+        <li><a href="search.html?city=عطبرة">عطبرة</a></li>
+        <li><a href="admin.html">لوحة الإدارة</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <span>© 2026 دارك / DARK — جميع الحقوق محفوظة.</span>
+    <span>الأسعار بالجنيه السوداني والدولار الأمريكي · لا دفع إلكتروني في الإصدار الأول.</span>
+  </div>
+</footer>
+
+<!-- ========================== شريط تنقّل الجوال ========================== -->
+<nav class="mnav" id="mnav" aria-label="تنقّل الجوال">
+  <a href="index.html" aria-current="page">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20H4v-9.5Z"/><path d="M9.5 20v-5h5v5"/></svg>
+    الرئيسية
+  </a>
+  <a href="search.html">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+    العقارات
+  </a>
+  <a href="publish.html">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+    أضف عقارك
+  </a>
+  <a href="dashboard.html">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="3.5"/><path d="M5 20c1.2-3.6 3.8-5.2 7-5.2S17.8 16.4 19 20"/></svg>
+    حسابي
+  </a>
+</nav>
+
+</body>
+</html>

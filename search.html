@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="نتائج البحث في عقارات دارك الموثّقة ميدانيًا — فلترة بالمدينة والميزانية والفِرَش وعدد الغرف.">
+<title>نتائج البحث — دارك</title>
+<link rel="icon" href="assets/brand/darq-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/darq.css">
+<script src="assets/js/darq.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">تخطَّ إلى المحتوى الرئيسي</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="index.html" aria-label="دارك — الصفحة الرئيسية">
+      <img src="assets/brand/darq-logo-horizontal-dark-clear.svg" alt="شعار دارك" width="150" height="34">
+    </a>
+    <nav class="nav" aria-label="التنقّل الرئيسي">
+      <a href="index.html">الرئيسية</a>
+      <a href="search.html" aria-current="page">العقارات</a>
+      <a href="index.html#how">كيف نتحقق؟</a>
+      <a href="index.html#community">خدمات الجالية</a>
+      <a href="index.html#offices">للمكاتب</a>
+    </nav>
+    <span class="spacer"></span>
+    <div class="topbar-actions">
+      <a class="btn ghost" href="login.html">دخول</a>
+      <a class="btn amber" href="publish.html">أضف عقارك</a>
+      <button class="btn ghost menu-btn" id="menu-btn" type="button"
+              aria-expanded="false" aria-controls="mobile-menu" aria-label="فتح قائمة التنقّل">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mmenu" id="mobile-menu">
+    <a href="index.html">الرئيسية</a>
+    <a href="search.html" aria-current="page">العقارات</a>
+    <a href="index.html#how">كيف نتحقق؟</a>
+    <a href="index.html#community">خدمات الجالية</a>
+    <a href="index.html#offices">للمكاتب</a>
+    <a href="login.html">دخول</a>
+  </div>
+</header>
+
+<main id="main" class="wrap layout" id="search-root">
+
+  <!-- ============================== الفلاتر ============================== -->
+  <aside class="filters" id="filters" aria-labelledby="filters-title">
+    <div class="row-between" style="margin-block-end:18px">
+      <h4 id="filters-title" style="margin:0">تصفية النتائج</h4>
+      <button class="link" id="reset-filters" type="button">إعادة التهيئة</button>
+    </div>
+
+    <fieldset class="fgroup">
+      <legend class="t">حالة التوثيق</legend>
+      <label class="opt" for="f-verify-only">
+        <input type="radio" name="verify" id="f-verify-only" value="verified" checked>
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        عقارات موثّقة ميدانيًا فقط
+      </label>
+      <label class="opt" for="f-verify-all">
+        <input type="radio" name="verify" id="f-verify-all" value="all">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        تشمل غير الموثّقة
+      </label>
+    </fieldset>
+
+    <fieldset class="fgroup" id="f-cities">
+      <legend class="t">المدينة</legend>
+      <label class="opt" for="fc-بورتسودان">
+        <input type="checkbox" id="fc-بورتسودان" value="بورتسودان">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        بورتسودان <span class="cnt" id="cnt-city-بورتسودان">0</span>
+      </label>
+      <label class="opt" for="fc-مدني">
+        <input type="checkbox" id="fc-مدني" value="مدني">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        مدني <span class="cnt" id="cnt-city-مدني">0</span>
+      </label>
+      <label class="opt" for="fc-عطبرة">
+        <input type="checkbox" id="fc-عطبرة" value="عطبرة">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        عطبرة <span class="cnt" id="cnt-city-عطبرة">0</span>
+      </label>
+    </fieldset>
+
+    <fieldset class="fgroup" id="f-types">
+      <legend class="t">نوع العقار</legend>
+      <label class="opt" for="ft-شقة">
+        <input type="checkbox" id="ft-شقة" value="شقة">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        شقة <span class="cnt" id="cnt-type-شقة">0</span>
+      </label>
+      <label class="opt" for="ft-منزل">
+        <input type="checkbox" id="ft-منزل" value="منزل">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        منزل <span class="cnt" id="cnt-type-منزل">0</span>
+      </label>
+      <label class="opt" for="ft-استوديو">
+        <input type="checkbox" id="ft-استوديو" value="استوديو">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        استوديو <span class="cnt" id="cnt-type-استوديو">0</span>
+      </label>
+      <label class="opt" for="ft-غرفة">
+        <input type="checkbox" id="ft-غرفة" value="غرفة">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        غرفة <span class="cnt" id="cnt-type-غرفة">0</span>
+      </label>
+      <label class="opt" for="ft-مكتب">
+        <input type="checkbox" id="ft-مكتب" value="مكتب">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        مكتب <span class="cnt" id="cnt-type-مكتب">0</span>
+      </label>
+    </fieldset>
+
+    <div class="fgroup">
+      <div class="t">الإيجار الشهري (جنيه)</div>
+      <div class="range-field">
+        <label class="rlabel" for="f-min">الحد الأدنى</label>
+        <input type="range" id="f-min" min="0" max="1000000" step="10000" value="0"
+               aria-describedby="f-min-v">
+        <div class="rv"><span>من</span><b id="f-min-v">0 جنيه</b></div>
+      </div>
+      <div class="range-field">
+        <label class="rlabel" for="f-max">الحد الأعلى</label>
+        <input type="range" id="f-max" min="0" max="1000000" step="10000" value="1000000"
+               aria-describedby="f-max-v">
+        <div class="rv"><span>إلى</span><b id="f-max-v">1,000,000 جنيه</b></div>
+      </div>
+    </div>
+
+    <fieldset class="fgroup" id="f-furnish">
+      <legend class="t">الفِرَش</legend>
+      <label class="opt" for="ff-مفروش">
+        <input type="checkbox" id="ff-مفروش" value="مفروش">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        مفروش <span class="cnt" id="cnt-fur-مفروش">0</span>
+      </label>
+      <label class="opt" for="ff-فارغ">
+        <input type="checkbox" id="ff-فارغ" value="فارغ">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        فارغ <span class="cnt" id="cnt-fur-فارغ">0</span>
+      </label>
+    </fieldset>
+
+    <fieldset class="fgroup" id="f-rooms">
+      <legend class="t">عدد الغرف</legend>
+      <label class="opt" for="fr-1">
+        <input type="checkbox" id="fr-1" value="1">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        غرفة واحدة <span class="cnt" id="cnt-rooms-1">0</span>
+      </label>
+      <label class="opt" for="fr-2">
+        <input type="checkbox" id="fr-2" value="2">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        غرفتان <span class="cnt" id="cnt-rooms-2">0</span>
+      </label>
+      <label class="opt" for="fr-3">
+        <input type="checkbox" id="fr-3" value="3">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 10"><path d="M1 5.1 4.2 8.4 11 1.5"/></svg></span>
+        ثلاث غرف أو أكثر <span class="cnt" id="cnt-rooms-3">0</span>
+      </label>
+    </fieldset>
+  </aside>
+
+  <!-- ============================== النتائج ============================== -->
+  <div id="search-root">
+    <button class="btn ghost filters-toggle" id="filters-toggle" type="button"
+            aria-expanded="true" aria-controls="filters">طيّ الفلاتر</button>
+
+    <div class="sortbar">
+      <div class="r"><b id="res-count">0</b> عقار موثّق ميدانيًا في بورتسودان ومدني وعطبرة</div>
+      <div class="tabs" id="sort-tabs" role="group" aria-label="ترتيب النتائج">
+        <button class="tab on" type="button" data-sort="newest" aria-pressed="true">الأحدث</button>
+        <button class="tab" type="button" data-sort="cheap" aria-pressed="false">الأقل سعرًا</button>
+        <button class="tab" type="button" data-sort="rating" aria-pressed="false">الأعلى تقييمًا</button>
+      </div>
+    </div>
+
+    <p class="sr-only" id="res-live" role="status" aria-live="polite"></p>
+
+    <div class="grid2" id="results"></div>
+
+    <div class="empty" id="empty-state" hidden>
+      <span class="ic" aria-hidden="true">
+        <svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4M8.5 11h5"/></svg>
+      </span>
+      <h3>لا توجد نتائج مطابقة</h3>
+      <p id="empty-hint">جرّب توسيع نطاق الميزانية أو إزالة بعض المدن والأنواع.</p>
+      <button class="btn amber" id="empty-reset" type="button">توسيع الفلاتر</button>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-bar">
+    <span>© 2026 دارك / DARK — جميع الحقوق محفوظة.</span>
+    <span>الأسعار بالجنيه السوداني والدولار الأمريكي · لا دفع إلكتروني في الإصدار الأول.</span>
+  </div>
+</footer>
+
+<nav class="mnav" id="mnav" aria-label="تنقّل الجوال">
+  <a href="index.html">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20H4v-9.5Z"/><path d="M9.5 20v-5h5v5"/></svg>
+    الرئيسية
+  </a>
+  <a href="search.html" aria-current="page">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+    العقارات
+  </a>
+  <a href="publish.html">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+    أضف عقارك
+  </a>
+  <a href="dashboard.html">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="3.5"/><path d="M5 20c1.2-3.6 3.8-5.2 7-5.2S17.8 16.4 19 20"/></svg>
+    حسابي
+  </a>
+</nav>
+
+</body>
+</html>
