@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARK - شبكة الخدمة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .status-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .status-icon {
+            font-size: 64px;
+            margin: 30px 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        .status-text {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .status-detail {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .network-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .network-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .network-item:last-child {
+            border-bottom: none;
+        }
+
+        .network-label {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .network-value {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .offline-features {
+            text-align: right;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .offline-features h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .feature-list li:before {
+            content: "✓ ";
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .connection-quality {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .quality-good {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .quality-medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .quality-poor {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-card">
+        <div class="logo">DARK</div>
+        
+        <div class="status-icon" id="statusIcon">📡</div>
+        
+        <h1 class="status-text" id="statusText">جاري الاتصال...</h1>
+        
+        <p class="status-detail" id="statusDetail">نتحقق من حالة الشبكة لتحسين تجربتك</p>
+        
+        <div class="network-info" id="networkInfo" style="display: none;">
+            <div class="network-item">
+                <span class="network-label">نوع الشبكة</span>
+                <span class="network-value" id="networkType">-</span>
+            </div>
+            <div class="network-item">
+                <span class="network-label">قوة الإشارة</span>
+                <span class="network-value" id="signalStrength">-</span>
+            </div>
+            <div class="network-item">
+                <span class="network-label">سرعة التحميل</span>
+                <span class="network-value" id="downloadSpeed">-</span>
+            </div>
+            <div class="network-item">
+                <span class="network-label">حالة الاتصال</span>
+                <span class="network-value" id="onlineStatus">-</span>
+            </div>
+        </div>
+        
+        <div id="qualityBadge"></div>
+        
+        <div style="margin-top: 30px;">
+            <button class="btn" onclick="retryConnection()" id="retryBtn">إعادة المحاولة</button>
+            <button class="btn btn-secondary" onclick="continueOffline()">تصفح دون اتصال</button>
+        </div>
+        
+        <div class="offline-features">
+            <h3>✨ متاح الآن دون اتصال:</h3>
+            <ul class="feature-list">
+                <li>تصفح العقارات المحملة سابقاً</li>
+                <li>عرض البيانات المحفوظة محلياً</li>
+                <li>كتابة الاستفسارات (تُرسَل لاحقاً)</li>
+                <li>المفضلة والإعدادات</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Network detection and optimization
+        let connectionType = 'unknown';
+        let isOnline = navigator.onLine;
+
+        function updateNetworkStatus() {
+            const statusIcon = document.getElementById('statusIcon');
+            const statusText = document.getElementById('statusText');
+            const statusDetail = document.getElementById('statusDetail');
+            const networkInfo = document.getElementById('networkInfo');
+            const qualityBadge = document.getElementById('qualityBadge');
+
+            if (!isOnline) {
+                statusIcon.textContent = '📴';
+                statusText.textContent = 'لا يوجد اتصال بالإنترنت';
+                statusDetail.textContent = 'يمكنك الاستمرار في تصفح المحتوى المحفوظ محلياً';
+                qualityBadge.innerHTML = '<span class="connection-quality quality-poor">دون اتصال</span>';
+                networkInfo.style.display = 'block';
+                document.getElementById('onlineStatus').textContent = 'متقطع';
+                document.getElementById('onlineStatus').style.color = '#dc3545';
+            } else {
+                // Detect connection type
+                if ('connection' in navigator) {
+                    const conn = navigator.connection;
+                    connectionType = conn.effectiveType || 'unknown';
+                    
+                    let qualityClass = 'quality-good';
+                    let qualityText = 'جيد';
+                    
+                    if (connectionType === 'slow-2g' || connectionType === '2g') {
+                        qualityClass = 'quality-poor';
+                        qualityText = 'ضعيف جداً';
+                        statusIcon.textContent = '📶';
+                        statusText.textContent = 'شبكة ضعيفة';
+                        statusDetail.textContent = 'جاري تحسين المحتوى للشبكات البطيئة';
+                    } else if (connectionType === '3g') {
+                        qualityClass = 'quality-medium';
+                        qualityText = 'متوسط';
+                        statusIcon.textContent = '📡';
+                        statusText.textContent = 'شبكة متوسطة السرعة';
+                        statusDetail.textContent = 'جاري تحميل النسخة المحسنة';
+                    } else {
+                        statusIcon.textContent = '🚀';
+                        statusText.textContent = 'اتصال ممتاز';
+                        statusDetail.textContent = 'جاري تحميل كل الميزات';
+                    }
+                    
+                    qualityBadge.innerHTML = `<span class="connection-quality ${qualityClass}">${qualityText} (${connectionType.toUpperCase()})</span>`;
+                    
+                    document.getElementById('networkType').textContent = connectionType.toUpperCase();
+                    document.getElementById('signalStrength').textContent = conn.downlink ? `${conn.downlink} Mbps` : 'غير معروف';
+                    document.getElementById('downloadSpeed').textContent = conn.rtt ? `${conn.rtt}ms` : 'غير معروف';
+                    document.getElementById('onlineStatus').textContent = 'متصل';
+                    document.getElementById('onlineStatus').style.color = '#28a745';
+                } else {
+                    statusIcon.textContent = '🌐';
+                    statusText.textContent = 'متصل بالإنترنت';
+                    statusDetail.textContent = 'جاري تحميل المحتوى الكامل';
+                    qualityBadge.innerHTML = '<span class="connection-quality quality-good">متصل</span>';
+                }
+                
+                networkInfo.style.display = 'block';
+            }
+        }
+
+        function retryConnection() {
+            const btn = document.getElementById('retryBtn');
+            btn.textContent = 'جاري التحقق...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                isOnline = navigator.onLine;
+                updateNetworkStatus();
+                btn.textContent = 'إعادة المحاولة';
+                btn.disabled = false;
+            }, 2000);
+        }
+
+        function continueOffline() {
+            alert('سيتم تحويلك إلى وضع التصفح دون اتصال. يمكنك الوصول إلى المحتوى المحفوظ محلياً.');
+            // Here you would redirect to offline mode or load cached content
+        }
+
+        // Event listeners
+        window.addEventListener('online', () => {
+            isOnline = true;
+            updateNetworkStatus();
+        });
+
+        window.addEventListener('offline', () => {
+            isOnline = false;
+            updateNetworkStatus();
+        });
+
+        // Initial check
+        updateNetworkStatus();
+
+        // Auto-refresh every 10 seconds
+        setInterval(updateNetworkStatus, 10000);
+    </script>
+</body>
+</html>
